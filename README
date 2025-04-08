@@ -1,0 +1,37 @@
+Install Required Packages
+pip install fastapi uvicorn rapidfuzz httpx
+
+Project Structure
+
+middleware_api/
+├── main.py
+├── nlp_fuzzy.py
+├── router.py
+├── external_connector.py
+├── aggregator.py
+├── config.py
+└── utils.py
+
+
+"Lightweight Middleware System Design for NLP-Driven API Routing and External Data Aggregation"
+
+Why this qualifies:
+Lightweight: It's built on FastAPI (fast, async, minimal dependencies).
+
+Middleware: Acts as an intermediary — processes input, routes intelligently, talks to external systems.
+
+Well-defined responsibilities: Clear separation of concerns (controller, NLP/fuzzy logic, routing, data aggregation).
+
+Extensible: Can easily be expanded for logging, retries, multiple endpoint queries, etc.
+
+
+Logging
+
+Retries using httpx + tenacity
+
+Support for multiple endpoints (fan-out calls)
+
+Structured response aggregation
+
+Error handling and extensibility points
+
