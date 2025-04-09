@@ -35,3 +35,19 @@ Structured response aggregation
 
 Error handling and extensibility points
 
+# Fuzzy Gherkin Step Resolver (FastAPI)
+
+## Features
+
+- Translates Gherkin steps to API endpoints using fuzzy logic.
+- Fetches responses from matched API.
+- Async + retries + logging.
+- Extensible microservice architecture.
+
+## Setup
+
+```bash
+pip install -r requirements.txt
+uvicorn main:app --reload
+
+

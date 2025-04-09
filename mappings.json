@@ -1,0 +1,5 @@
+{
+  "credit card details": "https://api.example.com/getCreditCardDetails",
+  "account details": "https://api.example.com/getAccountDetails",
+  "mortgage account details": "https://api.example.com/getMortgageAccountDetails"
+}
