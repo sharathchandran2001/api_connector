@@ -17,6 +17,23 @@ def match_api_endpoint(step: str, threshold: float = 70) -> Optional[Dict[str, A
         }
     return None
 
-async def match_api_endpoint_async(step: str, threshold: float = 70) -> Optional[Dict[str, Any]]:
-    # Wrapped async for future concurrency expansion
-    return match_api_endpoint(step, threshold)
+# async def match_api_endpoint_async(step: str, threshold: float = 70) -> Optional[Dict[str, Any]]:
+#     # Wrapped async for future concurrency expansion
+#     return match_api_endpoint(step, threshold)
+
+async def match_api_endpoint_async(step_text: str) -> Optional[Dict[str, Any]]:
+    # Load mappings from mapping.json
+    with open("mapping.json", "r") as f:
+        mappings = json.load(f)
+
+    # Example matching logic (implement your own matching algorithm)
+    for keyword, config in mappings.items():
+        if keyword in step_text:
+            return {
+                "keyword": keyword,
+                "api_endpoint": config["url_path"],
+                "method": config.get("method", "GET").upper(),
+                "body_template": config.get("body_template", {})
+            }
+    return None
+

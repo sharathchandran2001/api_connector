@@ -1,0 +1,19 @@
+{
+  "credit card details": "https://api.example.com/getCreditCardDetails",
+  "account details": "https://api.example.com/getAccountDetails",
+  "mortgage account details": "https://api.example.com/getMortgageAccountDetails",
+  "enroll user": {
+    "url_path": "https://api.example.com/enrollment",
+    "method": "POST",
+    "body_template": {
+      "proposed_user_id": "user123",
+      "proposed_password": "pass123",
+      "account_type": "single",
+      "security_QA": "myname"
+    }
+  },
+  "get users": {
+    "url_path": "https://api.example.com/users",
+    "method": "GET"
+  }
+}
