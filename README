@@ -50,4 +50,9 @@ Error handling and extensibility points
 pip install -r requirements.txt
 uvicorn main:app --reload
 
+pip install pytest-cov
+
+pytest --cov=main --cov-report=term-missing
+
+
 

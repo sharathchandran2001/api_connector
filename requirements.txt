@@ -3,3 +3,13 @@ uvicorn
 pydantic
 httpx
 rapidfuzz
+
+
+pytest
+pytest-asyncio
+httpx
+fastapi
+uvicorn
+asgi-lifespan
+
+pip install pytest-cov
