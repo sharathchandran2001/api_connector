@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
+from typing import List
 import httpx
 
 app = FastAPI()
@@ -8,11 +9,15 @@ app = FastAPI()
 SPRING_API_SUBMIT_URL = "http://spring-boot-api:8080/api/process"
 SPRING_API_ACCT_URL = "http://spring-boot-api:8080/api/accountdetails"
 
-# Request model for /submit
+# Model for individual user in the list
 class UserRequest(BaseModel):
     username: str
     password: str
     security_question: str
+
+# Request model that wraps multiple users
+class CustomerListRequest(BaseModel):
+    customerList: List[UserRequest]
 
 # Request model for /accountdetails
 class AccountDetailsRequest(BaseModel):
@@ -21,12 +26,12 @@ class AccountDetailsRequest(BaseModel):
     security_question: str
 
 @app.post("/submit")
-async def forward_to_spring(user: UserRequest):
+async def forward_to_spring(customer_list: CustomerListRequest):
     try:
         async with httpx.AsyncClient() as client:
             response = await client.post(
                 SPRING_API_SUBMIT_URL,
-                json=user.dict(),
+                json=customer_list.dict(),
                 timeout=10.0
             )
             response.raise_for_status()
